@@ -6,6 +6,7 @@ fun main(){
 
     var partides: Int?
     var tiradesPerPartida: Int?
+    var partidasGnadas: Int = 0
 
     println(DAUS)
     println("Benvingut/da al joc dels daus.\nPer guanyar cada partida, la suma dels punts de les teves tirades dels teus daus ha de ser superior a la de la CPU")
@@ -66,10 +67,21 @@ fun main(){
 
         if (tiradesGuardades[partida][tiradesPerPartida] > acumuladorCPU){
             println("Has guanyat!")
+            partidasGnadas++
         }else if (tiradesGuardades[partida][tiradesPerPartida] < acumuladorCPU){
             println("Has perdut!")
         }else{
             println("Heu empatat!")
         }
     }
+
+    // Aqui calculamos el pocertange de cada partida ganada, perdida o empatada
+    val victoriasUsuario = (partidasGnadas.toDouble()/partides)*100
+
+    // Todo esto es el historial
+    println("=====================================")
+    println("El historial de todas las partidas:")
+    println("Total de partidas jugadas: $partides")
+    println("Total de partidas ganadas por jugadro: $victoriasUsuario%")
+    println("=====================================")
 }
