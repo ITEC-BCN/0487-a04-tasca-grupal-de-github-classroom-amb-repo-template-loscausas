@@ -13,7 +13,7 @@ fun main(){
 
     // Llegim el número de partides que volem jugar
     do {
-        println("Quantes partides vols jugar? (de 1 a 3)")
+        println("Quantes partides vols jugar? (de 1 a 3) ")
         partides = readLine()?.toIntOrNull()
 
         if (partides != null && (partides < 1 || partides > 3)){
