@@ -58,7 +58,10 @@ fun main(){
             tiradesGuardades[partida][tiradesPerPartida] += tiradaActual
 
             /** Tirades CPU **/
-            acumuladorCPU += Random.nextInt(1, 6 + 1)
+            // mostrar tirada de la CPU igual que la del jugador
+            val tiradaCPU = Random.nextInt(1, 6 + 1)
+            println("La CPU ha tret un ${CARES_DAU[tiradaCPU - 1]} !")
+            acumuladorCPU += tiradaCPU
         }
 
         println("Partida acabada!")
