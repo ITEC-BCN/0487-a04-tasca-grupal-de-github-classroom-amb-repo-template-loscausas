@@ -1,15 +1,20 @@
 import kotlin.random.Random
 
 fun main(){
-    val DAUS: String = "⚀ ⚁ ⚂ ⚃ ⚄ ⚅"
+    val DAUS: String = "⚀ ⚁ ⚂ ⚃ ⚄ ⚅ ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ "
     val CARES_DAU: Array<String> = arrayOf("⚀", "⚁", "⚂", "⚃", "⚄", "⚅")
 
     var partides: Int?
     var tiradesPerPartida: Int?
     var partidasGnadas: Int = 0
 
+    println("=====================================")
+    println("       JOC DELS DAUS – VS CPU        ")
+    println("=====================================")
     println(DAUS)
-    println("Benvingut/da al joc dels daus.\nPer guanyar cada partida, la suma dels punts de les teves tirades dels teus daus ha de ser superior a la de la CPU")
+    println("Benvingut/da al joc dels daus.")
+    println("Per guanyar cada partida, la suma dels teus daus")
+    println("ha de ser superior a la de la CPU.")
     println(DAUS)
 
     // Llegim el número de partides que volem jugar
@@ -45,23 +50,27 @@ fun main(){
         var acumuladorCPU: Int = 0
         var tiradaActual: Int = 0
 
+        println("\n=== PARTIDA ${partida + 1} / $partides ===")
+
         for (tirada in 0 until tiradesGuardades[partida].size - 1) {
             /** Tirades persona **/
-            println("Tira el dau! (Intent $tirada)")
+            println("Tira el dau! (Intent ${tirada + 1})")
             tiradaActual = Random.nextInt(1, 6 + 1)
             println("Has tret un ${CARES_DAU[tiradaActual-1]} !")
 
             // Guardem la tirada
             tiradesGuardades[partida][tirada] = tiradaActual
 
+            println("=========== VS ===========")
+
             // Acumulem el sumatori a l'última columna de la fila
             tiradesGuardades[partida][tiradesPerPartida] += tiradaActual
 
             /** Tirades CPU **/
-            // mostrar tirada de la CPU igual que la del jugador
             val tiradaCPU = Random.nextInt(1, 6 + 1)
             println("La CPU ha tret un ${CARES_DAU[tiradaCPU - 1]} !")
             acumuladorCPU += tiradaCPU
+            println("_______________________________________")
         }
 
         println("Partida acabada!")
@@ -76,6 +85,7 @@ fun main(){
         }else{
             println("Heu empatat!")
         }
+        println()
     }
 
     // Aqui calculamos el pocertange de cada partida ganada, perdida o empatada
@@ -83,8 +93,9 @@ fun main(){
 
     // Todo esto es el historial
     println("=====================================")
-    println("El historial de todas las partidas:")
-    println("Total de partidas jugadas: $partides")
-    println("Total de partidas ganadas por jugadro: $victoriasUsuario%")
+    println("     RESUM FINAL DEL JOC     ")
+    println("=====================================")
+    println("Total de partides jugades: $partides")
+    println("Partides guanyades: $partidasGnadas (${"%.1f".format(victoriasUsuario)}%)")
     println("=====================================")
 }
